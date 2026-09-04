@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>EL Prof Championship | بطولة الكلمات الإنجليزية</title>
+<style>
+:root{--bg:#070812;--bg2:#101126;--card:rgba(19,20,43,.72);--line:rgba(255,255,255,.11);--text:#f7f7ff;--muted:#a9acc8;--blue:#37a8ff;--purple:#9b5cff;--gold:#ffc857;--green:#31d07f;--red:#ff5577;--shadow:0 18px 55px rgba(0,0,0,.35)}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Tahoma,Arial,sans-serif;background:radial-gradient(circle at 15% 15%,#17244a 0,transparent 25%),radial-gradient(circle at 85% 10%,#301d58 0,transparent 24%),radial-gradient(circle at 50% 90%,#2a2041 0,transparent 28%),var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:34px 34px;pointer-events:none;animation:grid 20s linear infinite;z-index:-1}@keyframes grid{to{background-position:34px 34px}}
+button,input,textarea,select{font:inherit}.container{width:min(1180px,92%);margin:auto}.glass{background:var(--card);border:1px solid var(--line);backdrop-filter:blur(18px);box-shadow:var(--shadow);border-radius:24px}
+header{padding:24px 0;position:sticky;top:0;z-index:20;background:rgba(7,8,18,.72);backdrop-filter:blur(15px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:14px}.brand .logo{width:56px;height:56px;border-radius:18px;display:grid;place-items:center;font-size:28px;background:linear-gradient(135deg,var(--blue),var(--purple));box-shadow:0 0 35px rgba(86,121,255,.45)}h1{font-size:clamp(20px,4vw,32px);margin:0}.subtitle{color:var(--gold);margin-top:5px}.actions{display:flex;gap:9px;flex-wrap:wrap}
+.btn{border:0;border-radius:14px;padding:12px 17px;cursor:pointer;color:white;background:linear-gradient(135deg,#273252,#1a1d34);transition:.25s;box-shadow:0 8px 20px rgba(0,0,0,.2)}.btn:hover{transform:translateY(-2px);filter:brightness(1.12)}.btn.primary{background:linear-gradient(135deg,var(--blue),var(--purple))}.btn.gold{background:linear-gradient(135deg,#f2a900,var(--gold));color:#251a00}.btn.danger{background:linear-gradient(135deg,#d52e54,var(--red))}.btn.green{background:linear-gradient(135deg,#168f55,var(--green))}
+.hero{text-align:center;padding:42px 0 18px}.hero h2{font-size:clamp(24px,5vw,46px);margin:8px 0}.hero p{color:var(--muted)}
+.wheel-area{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);gap:26px;align-items:center;padding:26px}.wheel-wrap{position:relative;width:min(82vw,560px);aspect-ratio:1;margin:auto;display:grid;place-items:center}.wheel-wrap:before{content:"";position:absolute;inset:-12px;border-radius:50%;background:conic-gradient(var(--blue),var(--purple),var(--gold),var(--blue));filter:blur(18px);opacity:.5}.pointer{position:absolute;top:-10px;z-index:5;width:0;height:0;border-left:24px solid transparent;border-right:24px solid transparent;border-top:0;border-bottom:52px solid var(--gold);filter:drop-shadow(0 0 8px var(--gold))}canvas{position:relative;width:100%;height:100%;border-radius:50%;border:8px solid rgba(255,255,255,.12);box-shadow:0 0 0 5px rgba(0,0,0,.2),0 0 45px rgba(69,143,255,.2)}
+.side-panel{padding:24px}.count{font-size:56px;font-weight:bold;background:linear-gradient(135deg,var(--gold),#fff);color:transparent;background-clip:text;margin:5px 0}.selected{min-height:120px;padding:20px;margin:18px 0;text-align:center;background:rgba(0,0,0,.22);border:1px dashed var(--line);border-radius:18px}.selected strong{display:block;font-size:28px;margin-top:10px;color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:30px 0}.section{padding:24px;margin:28px 0}.section h2{margin-top:0}.upcoming{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;text-align:center;gap:14px;padding:25px}.player-name{font-size:clamp(22px,4vw,38px);font-weight:bold}.vs{font-size:clamp(42px,7vw,78px);font-weight:bold;color:var(--gold);text-shadow:0 0 25px rgba(255,200,87,.7);animation:pulse 1.5s infinite}@keyframes pulse{50%{transform:scale(1.12);filter:brightness(1.3)}}
+.meta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:20px}.pill{padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.07);color:#e7e8ff}.countdown{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:22px}.timebox{min-width:85px;padding:14px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid var(--line)}.timebox b{display:block;font-size:24px;color:var(--gold)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:15px}.player-card,.match-card{padding:18px}.avatar{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--blue),var(--purple));font-size:25px}.row{display:flex;justify-content:space-between;align-items:center;gap:10px}.small{color:var(--muted);font-size:13px}.status{display:inline-block;margin-top:10px;padding:6px 10px;border-radius:999px;font-size:12px;background:rgba(49,208,127,.12);color:var(--green)}
+table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:18px}th,td{padding:13px;text-align:right;border-bottom:1px solid var(--line)}th{color:var(--gold);background:rgba(255,255,255,.05)}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.68);display:none;align-items:center;justify-content:center;padding:18px;z-index:100}.modal.show{display:flex}.modal-box{width:min(850px,96vw);max-height:90vh;overflow:auto;padding:24px}.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.full{grid-column:1/-1}label{display:block;color:#d6d8f4;margin-bottom:6px;font-size:14px}input,textarea,select{width:100%;padding:13px;border-radius:12px;border:1px solid var(--line);background:#0c0e1d;color:#fff;outline:none}textarea{min-height:90px;resize:vertical}.admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tab{padding:9px 12px;background:#12152a;border:1px solid var(--line);border-radius:11px;cursor:pointer}.tab.active{background:linear-gradient(135deg,var(--blue),var(--purple))}.admin-page{display:none}.admin-page.active{display:block}.list{max-height:260px;overflow:auto}.list-item{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:10px;border-bottom:1px solid var(--line)}
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,120px);padding:13px 20px;border-radius:13px;background:#171a31;border:1px solid var(--line);z-index:200;transition:.35s}.toast.show{transform:translate(-50%,0)}.confetti{position:fixed;width:10px;height:10px;z-index:180;pointer-events:none;animation:fall 2s linear forwards}@keyframes fall{to{transform:translate(var(--x),100vh) rotate(720deg);opacity:0}}
+.loading{position:fixed;inset:0;background:#070812;display:grid;place-items:center;z-index:999}.loading.hidden{opacity:0;visibility:hidden;transition:.7s}.loader{text-align:center}.ring{width:76px;height:76px;border:7px solid rgba(255,255,255,.1);border-top-color:var(--gold);border-radius:50%;margin:auto;animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.overlay-vs{position:fixed;inset:0;background:radial-gradient(circle,#1b2047,#05060e);z-index:150;display:none;place-items:center;text-align:center}.overlay-vs.show{display:grid}.overlay-vs .names{font-size:clamp(24px,6vw,58px);font-weight:bold;animation:zoom .7s both}@keyframes zoom{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:scale(1)}}
+.hidden{display:none!important}
+@media(max-width:850px){.wheel-area{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.upcoming{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}.wheel-wrap{width:min(90vw,480px)}}@media(max-width:500px){.actions .btn{padding:9px 11px;font-size:13px}.section,.wheel-area{padding:16px}.timebox{min-width:68px}}
+</style>
+</head>
+<body>
+<div class="loading" id="loading"><div class="loader"><div class="ring"></div><h2>EL Prof Championship</h2><p class="small">جاري تجهيز البطولة...</p></div></div>
+<header><div class="container nav"><div class="brand"><div class="logo">🏆</div><div><h1>EL Prof Championship</h1><div class="subtitle">بطولة الكلمات الإنجليزية</div></div></div><div class="actions"><button class="btn" id="soundBtn">🔊 الصوت</button><button class="btn" id="fullBtn">⛶ ملء الشاشة</button><button class="btn primary" id="adminBtn">🔐 لوحة تحكم الأدمن</button></div></div></header>
+
+<main class="container">
+<section class="hero"><h2>🎯 اختر أبطال المواجهة القادمة</h2><p>عجلة احترافية لاختيار اللاعبين عشوائيًا — يتم حفظ البطولة تلقائيًا.</p></section>
+
+<section class="glass wheel-area">
+<div class="wheel-wrap"><div class="pointer"></div><canvas id="wheel" width="900" height="900"></canvas></div>
+<div class="side-panel glass">
+<div class="small">عدد المشتركين الحالي</div><div class="count" id="participantCount">0</div>
+<div class="selected" id="selectionBox">🏆 اللاعب المختار سيظهر هنا<strong id="selectedName">—</strong></div>
+<div class="actions">
+<button class="btn gold" id="chooseBtn">🎯 اختر لاعب</button>
+<button class="btn primary hidden" id="opponentBtn">⚔️ اختر المنافس</button>
+<button class="btn hidden" id="undoBtn">↩️ إلغاء آخر اختيار</button>
+<button class="btn hidden" id="resetSpinBtn">🔄 إعادة تدوير العجلة</button>
+</div>
+<p class="small">لا يمكن اختيار نفس اللاعب مرتين، وأي لاعب يدخل في مواجهة قادمة يُستبعد تلقائيًا من العجلة.</p>
+</div>
+</section>
+
+<section class="section glass" id="nextSection">
+<h2>🔥 المواجهة القادمة</h2>
+<div id="nextMatch"></div>
+</section>
+
+<section class="section glass"><h2>📅 جميع المواجهات القادمة</h2><div class="cards" id="upcomingMatches"></div></section>
+<section class="section glass"><h2>🏁 المواجهات المنتهية</h2><div class="cards" id="finishedMatches"></div></section>
+
+<section class="section glass"><h2>🏆 ترتيب البطولة</h2><div style="overflow:auto"><table><thead><tr><th>المركز</th><th>اللاعب</th><th>الانتصارات</th><th>المباريات</th><th>نسبة الفوز</th></tr></thead><tbody id="leaderboard"></tbody></table></div></section>
+
+<section class="section glass"><div class="row"><h2>👥 المشتركون</h2><input id="searchPlayers" placeholder="🔎 ابحث عن لاعب..." style="max-width:280px"></div><div class="cards" id="playersGrid"></div></section>
+
+<section class="section glass"><h2>📜 سجل المواجهات</h2><div id="history"></div></section>
+</main>
+
+<div class="modal" id="loginModal"><div class="modal-box glass" style="max-width:440px"><div class="row"><h2>🔐 دخول الأدمن</h2><button class="btn" data-close="loginModal">✕</button></div><label>كود الدخول</label><input type="password" id="adminCode" placeholder="● ● ● ● ● ●" autocomplete="current-password"><label style="margin-top:10px"><input type="checkbox" id="showCode" style="width:auto"> إظهار الكود</label><div class="actions" style="margin-top:16px"><button class="btn primary" id="loginSubmit">دخول</button></div><p class="small">الكود لا يظهر داخل واجهة الموقع ولا يتم عرضه في الرسائل.</p></div></div>
+
+<div class="modal" id="adminModal"><div class="modal-box glass"><div class="row"><h2>⚙️ لوحة تحكم الأدمن</h2><button class="btn" data-close="adminModal">✕ إغلاق</button></div>
+<div class="admin-tabs">
+<button class="tab active" data-tab="names">👥 المشتركين</button><button class="tab" data-tab="settings">📝 إعدادات المنافسة</button><button class="tab" data-tab="matches">⚔️ إدارة المواجهات</button><button class="tab" data-tab="results">🏆 النتائج</button><button class="tab" data-tab="data">💾 البيانات</button>
+</div>
+<div class="admin-page active" id="tab-names">
+<div class="form-grid"><div><label>اسم مشترك جديد</label><input id="newName" placeholder="اكتب الاسم"></div><div style="align-self:end"><button class="btn green" id="addName">➕ إضافة</button></div><div class="full"><label>إضافة أسماء كثيرة (كل اسم في سطر)</label><textarea id="bulkNames" placeholder="أحمد&#10;محمد&#10;علي"></textarea><button class="btn primary" id="bulkAdd">إضافة القائمة</button></div></div>
+<div class="row" style="margin-top:20px"><h3>الأسماء (<span id="adminCount">0</span>)</h3><div class="actions"><button class="btn" id="sortNames">🔤 ترتيب أبجدي</button><button class="btn danger" id="clearNames">🗑️ حذف الجميع</button></div></div><div class="list" id="adminNamesList"></div>
+</div>
+
+<div class="admin-page" id="tab-settings"><div class="form-grid">
+<div><label>عنوان المنافسة</label><input id="setTitle"></div><div><label>موضوع المنافسة</label><input id="setTopic"></div>
+<div><label>الموعد الافتراضي</label><input type="datetime-local" id="setDate"></div><div><label>مكان المنافسة / طريقة المشاهدة</label><input id="setPlace"></div>
+<div class="full"><label>وصف المنافسة</label><textarea id="setDescription"></textarea></div>
+<div class="full"><button class="btn primary" id="saveSettings">💾 حفظ الإعدادات</button></div>
+</div></div>
+
+<div class="admin-page" id="tab-matches"><div class="form-grid">
+<div><label>اللاعب الأول</label><select id="manualP1"></select></div><div><label>اللاعب الثاني</label><select id="manualP2"></select></div>
+<div><label>موعد المواجهة</label><input type="datetime-local" id="manualDate"></div><div><label>موضوع المواجهة</label><input id="manualTopic"></div>
+<div class="full"><button class="btn green" id="createManualMatch">➕ إنشاء مواجهة</button></div></div>
+<h3>إدارة المواجهات</h3><div id="manageMatches" class="list"></div></div>
+
+<div class="admin-page" id="tab-results"><p class="small">اختر الفائز من المواجهات غير المنتهية.</p><div id="resultMatches" class="list"></div></div>
+
+<div class="admin-page" id="tab-data"><div class="actions">
+<button class="btn primary" id="exportData">⬇️ تصدير JSON</button><label class="btn">⬆️ استيراد JSON<input type="file" id="importData" accept=".json" class="hidden"></label>
+<button class="btn danger" id="resetTournament">♻️ إعادة ضبط البطولة</button>
+</div><p class="small">التصدير يحفظ الأسماء والإعدادات والمواجهات والنتائج في ملف JSON.</p></div>
+</div></div>
+
+<div class="overlay-vs" id="vsOverlay"><div class="names"><div id="overlayP1">PLAYER 1</div><div class="vs">VS</div><div id="overlayP2">PLAYER 2</div></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===== EL Prof Championship - Single File App ===== */
+const ADMIN_CODE = "ELPROF-2026"; // غيّره من هنا عند الحاجة، لا يظهر في واجهة المستخدم.
+const KEY="elprof_championship_v1";
+const defaults={players:[],matches:[],settings:{title:"تحدي الكلمات الإنجليزية",topic:"English Vocabulary Challenge",date:"",place:"",description:"مواجهة قوية بين الطالبين في حفظ ومعرفة معاني الكلمات الإنجليزية."},sound:true};
+let state=JSON.parse(localStorage.getItem(KEY)||"null")||structuredClone(defaults);
+let currentSelection=[],lastSelection=[],rotation=0,spinning=false,audioCtx=null;
+
+const $=id=>document.getElementById(id);
+function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+function toast(msg){const t=$("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2600)}
+function confirmAction(msg){return window.confirm(msg)}
+function getStats(name){let played=0,wins=0;state.matches.forEach(m=>{if(m.p1===name||m.p2===name){played++;if(m.winner===name)wins++}});return{played,wins,rate:played?Math.round(wins/played*100):0}}
+function tone(freq,duration=.12,type="sine"){if(!state.sound)return;try{audioCtx??=new(AudioContext||webkitAudioContext)();let o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(.06,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+duration);o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+duration)}catch(e){}}
+function confetti(){for(let i=0;i<70;i++){let d=document.createElement("i");d.className="confetti";d.style.left=Math.random()*100+"vw";d.style.top="-20px";d.style.background=["#37a8ff","#9b5cff","#ffc857","#31d07f","#fff"][i%5];d.style.setProperty("--x",(Math.random()-.5)*300+"px");d.style.animationDelay=Math.random()*.4+"s";document.body.appendChild(d);setTimeout(()=>d.remove(),2500)}}
+function drawWheel(){
+ const c=$("wheel"),ctx=c.getContext("2d"),n=state.players.length;ctx.clearRect(0,0,c.width,c.height);
+ ctx.save();ctx.translate(c.width/2,c.height/2);ctx.rotate(rotation*Math.PI/180);
+ if(!n){ctx.fillStyle="#15182d";ctx.beginPath();ctx.arc(0,0,430,0,Math.PI*2);ctx.fill();ctx.fillStyle="#fff";ctx.font="bold 42px Tahoma";ctx.textAlign="center";ctx.fillText("أضف مشتركين للبدء",0,10);ctx.restore();return}
+ const colors=["#2767c7","#7441c6","#c48a18","#1a936f","#b43b63","#3a8ba8","#934aa9","#5c6f32","#c06032","#4169b2"];
+ const a=Math.PI*2/n;
+ state.players.forEach((p,i)=>{let st=i*a-Math.PI/2;ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,430,st,st+a);ctx.closePath();ctx.fillStyle=colors[i%colors.length];ctx.fill();ctx.strokeStyle="rgba(255,255,255,.4)";ctx.lineWidth=2;ctx.stroke();
+  ctx.save();ctx.rotate(st+a/2);ctx.textAlign="right";ctx.fillStyle="white";ctx.font=`bold ${Math.max(14,Math.min(29,350/n+10))}px Tahoma`;ctx.shadowColor="#000";ctx.shadowBlur=5;let txt=p.length>16?p.slice(0,15)+"…":p;ctx.fillText(txt,390,8);ctx.restore();
+ });ctx.beginPath();ctx.arc(0,0,55,0,Math.PI*2);ctx.fillStyle="#0d1020";ctx.fill();ctx.strokeStyle="#ffc857";ctx.lineWidth=8;ctx.stroke();ctx.fillStyle="#ffc857";ctx.font="28px Arial";ctx.textAlign="center";ctx.fillText("🏆",0,10);ctx.restore();
+}
+function availablePlayers(){return state.players.filter(p=>!currentSelection.includes(p)&&!state.matches.some(m=>m.status==="upcoming"&&(m.p1===p||m.p2===p)))}
+function spinPick(){
+ if(spinning)return;
+ let available=availablePlayers();if(available.length<1){toast("لا يوجد لاعب متاح للاختيار.");return}
+ if(currentSelection.length===0&&state.players.length<2){toast("يجب إضافة لاعبين على الأقل لإنشاء مواجهة.");return}
+ spinning=true;$("chooseBtn").disabled=true;$("opponentBtn").disabled=true;tone(150,.08);
+ let winner=available[Math.floor(Math.random()*available.length)],idx=state.players.indexOf(winner),n=state.players.length,segment=360/n;
+ let desired=-(idx*segment+segment/2)+360*5;let start=rotation;let target=start+(desired-start%360)+Math.floor(Math.random()*2)*360;
+ let dur=4300,st=performance.now();
+ function anim(now){let x=Math.min(1,(now-st)/dur),ease=1-Math.pow(1-x,4);rotation=start+(target-start)*ease;drawWheel();if(x<1){if(Math.random()<.08)tone(180+Math.random()*90,.03);requestAnimationFrame(anim)}else{rotation=target;drawWheel();spinning=false;currentSelection.push(winner);lastSelection=[...currentSelection];$("selectedName").textContent=winner;confetti();tone(660,.22,"triangle");
+ if(currentSelection.length===1){$("opponentBtn").classList.remove("hidden");$("undoBtn").classList.remove("hidden");$("resetSpinBtn").classList.remove("hidden");toast("تم اختيار اللاعب الأول: "+winner)}
+ else createRandomMatch();
+ $("chooseBtn").disabled=false;$("opponentBtn").disabled=false;}}
+ requestAnimationFrame(anim);
+}
+function createRandomMatch(){
+ let [p1,p2]=currentSelection;if(p1===p2)return;showVS(p1,p2);
+ setTimeout(()=>{let s=state.settings;let m={id:Date.now(),p1,p2,date:s.date||"",topic:s.topic||s.title||"المنافسة",title:s.title||"تحدي البطولة",place:s.place||"",description:s.description||"",winner:null,status:"upcoming",createdAt:new Date().toISOString()};state.matches.push(m);save();currentSelection=[];$("opponentBtn").classList.add("hidden");$("selectedName").textContent="—";renderAll();toast("تم إنشاء المواجهة وحفظها تلقائيًا.");},1300)
+}
+function showVS(p1,p2){$("overlayP1").textContent=p1;$("overlayP2").textContent=p2;$("vsOverlay").classList.add("show");tone(280,.18,"sawtooth");setTimeout(()=>{$("vsOverlay").classList.remove("show");tone(620,.25,"triangle")},1400)}
+function undoSelection(){if(!currentSelection.length){toast("لا يوجد اختيار لإلغائه.");return}currentSelection.pop();$("selectedName").textContent=currentSelection.at(-1)||"—";$("opponentBtn").classList.toggle("hidden",currentSelection.length!==1);toast("تم إلغاء آخر اختيار.");}
+function fmtDate(d){if(!d)return"لم يتم تحديد موعد بعد.";let x=new Date(d);if(isNaN(x))return"لم يتم تحديد موعد بعد.";return x.toLocaleString("ar-EG",{weekday:"long",year:"numeric",month:"long",day:"numeric",hour:"numeric",minute:"2-digit"})}
+function renderNext(){
+ let m=state.matches.filter(x=>x.status==="upcoming").sort((a,b)=>(a.date||"9999").localeCompare(b.date||"9999"))[0],box=$("nextMatch");
+ if(!m){box.innerHTML='<div class="selected">لا توجد مواجهة قادمة حاليًا. اختر لاعبين من العجلة أو أنشئ مواجهة من لوحة الأدمن.</div>';return}
+ box.innerHTML=`<div class="upcoming"><div class="player-name">${esc(m.p1)}</div><div class="vs">VS</div><div class="player-name">${esc(m.p2)}</div></div><div class="meta"><span class="pill">📅 ${fmtDate(m.date)}</span><span class="pill">📚 ${esc(m.topic)}</span>${m.place?`<span class="pill">📍 ${esc(m.place)}</span>`:""}</div><div class="countdown" id="countdown"></div><p style="text-align:center;color:var(--muted)">${esc(m.description||"")}</p><div class="actions" style="justify-content:center"><button class="btn" onclick="copyMatch(${m.id})">📋 نسخ التفاصيل</button><button class="btn primary" onclick="shareMatch(${m.id})">📤 مشاركة</button></div>`;
+ updateCountdown(m);
+}
+function updateCountdown(m){let el=$("countdown");if(!el)return;if(!m.date){el.innerHTML='<div class="small">لم يتم تحديد موعد بعد.</div>';return}let diff=new Date(m.date)-Date.now();if(diff<=0){el.innerHTML='<div class="pill">⏰ حان موعد المواجهة أو انتهى العد التنازلي</div>';return}let d=Math.floor(diff/864e5),h=Math.floor(diff%864e5/36e5),mi=Math.floor(diff%36e5/6e4),s=Math.floor(diff%6e4/1000);el.innerHTML=[[d,"يوم"],[h,"ساعة"],[mi,"دقيقة"],[s,"ثانية"]].map(x=>`<div class="timebox"><b>${String(x[0]).padStart(2,"0")}</b>${x[1]}</div>`).join("")}
+function matchCard(m,manage=false){return `<div class="match-card glass"><b>${esc(m.p1)} <span style="color:var(--gold)">VS</span> ${esc(m.p2)}</b><p class="small">📅 ${fmtDate(m.date)}</p><p class="small">📚 ${esc(m.topic)}</p>${m.winner?`<p>🏆 الفائز: <b style="color:var(--gold)">${esc(m.winner)}</b></p>`:`<span class="status">🔵 قادمة</span>`}${manage?`<div class="actions" style="margin-top:10px"><button class="btn" onclick="editMatch(${m.id})">✏️ تعديل</button><button class="btn danger" onclick="cancelMatch(${m.id})">🗑️ إلغاء</button></div>`:""}</div>`}
+function renderMatches(){let up=state.matches.filter(m=>m.status==="upcoming"),fin=state.matches.filter(m=>m.status==="finished");$("upcomingMatches").innerHTML=up.length?up.map(m=>matchCard(m)).join(""):'<div class="small">لا توجد مواجهات قادمة.</div>';$("finishedMatches").innerHTML=fin.length?fin.map(m=>matchCard(m)).join(""):'<div class="small">لا توجد مواجهات منتهية.</div>';$("history").innerHTML=fin.length?fin.map(m=>`<div class="list-item"><span><b>${esc(m.p1)} VS ${esc(m.p2)}</b><br><span class="small">${fmtDate(m.date)} — ${esc(m.topic)}</span></span><span>🏆 ${esc(m.winner)}</span></div>`).join(""):'<div class="small">لا يوجد سجل نتائج حتى الآن.</div>'}
+function renderPlayers(){
+ let q=$("searchPlayers").value.trim().toLowerCase(),arr=state.players.filter(p=>p.toLowerCase().includes(q));$("playersGrid").innerHTML=arr.length?arr.map(p=>{let s=getStats(p),status=s.wins?"🏆 فائز":s.played?"🔵 في انتظار المنافسة":"🟢 جاهز";return `<div class="player-card glass"><div class="row"><div class="avatar">👤</div><div><b>${esc(p)}</b><div class="small">${status}</div></div></div><hr style="border-color:var(--line);margin:14px 0"><div class="row small"><span>المباريات: ${s.played}</span><span>الانتصارات: ${s.wins}</span><span>${s.rate}%</span></div></div>`}).join(""):'<div class="small">لا يوجد مشتركون مطابقون.</div>';
+}
+function renderBoard(){let a=state.players.map(p=>({name:p,...getStats(p)})).sort((x,y)=>y.wins-x.wins||y.rate-x.rate||y.played-x.played||x.name.localeCompare(y.name,"ar"));$("leaderboard").innerHTML=a.length?a.map((x,i)=>`<tr><td>${["🥇","🥈","🥉"][i]||i+1}</td><td>${esc(x.name)}</td><td>${x.wins}</td><td>${x.played}</td><td>${x.rate}%</td></tr>`).join(""):'<tr><td colspan="5">لا يوجد مشتركون بعد.</td></tr>'}
+function populateAdmin(){ $("participantCount").textContent=state.players.length;$("adminCount").textContent=state.players.length;$("adminNamesList").innerHTML=state.players.map((p,i)=>`<div class="list-item"><span>${esc(p)}</span><span><button class="btn" onclick="renamePlayer(${i})">✏️</button> <button class="btn danger" onclick="deletePlayer(${i})">🗑️</button></span></div>`).join("")||'<div class="small">لا يوجد أسماء.</div>';
+ ["manualP1","manualP2"].forEach(id=>$(id).innerHTML='<option value="">اختر لاعبًا</option>'+state.players.map(p=>`<option value="${esc(p)}">${esc(p)}</option>`).join(""));
+ let s=state.settings;$("setTitle").value=s.title||"";$("setTopic").value=s.topic||"";$("setDate").value=s.date||"";$("setPlace").value=s.place||"";$("setDescription").value=s.description||"";
+ $("manageMatches").innerHTML=state.matches.length?state.matches.map(m=>matchCard(m,true)).join(""):'<div class="small">لا توجد مواجهات.</div>';
+ $("resultMatches").innerHTML=state.matches.filter(m=>m.status==="upcoming").length?state.matches.filter(m=>m.status==="upcoming").map(m=>`<div class="list-item"><span>${esc(m.p1)} VS ${esc(m.p2)}</span><span><button class="btn gold" onclick="setWinner(${m.id},'${encodeURIComponent(m.p1)}')">🏆 ${esc(m.p1)}</button> <button class="btn gold" onclick="setWinner(${m.id},'${encodeURIComponent(m.p2)}')">🏆 ${esc(m.p2)}</button></span></div>`).join(""):'<div class="small">لا توجد مواجهات بانتظار النتيجة.</div>';
+}
+function renderAll(){drawWheel();renderNext();renderMatches();renderPlayers();renderBoard();populateAdmin()}
+function addName(name){name=(name||"").trim().replace(/\s+/g," ");if(!name){toast("لا يمكن إضافة اسم فارغ.");return false}if(state.players.some(p=>p.toLowerCase()===name.toLowerCase())){toast("هذا الاسم موجود بالفعل.");return false}state.players.push(name);save();renderAll();return true}
+function copyMatch(id){let m=state.matches.find(x=>x.id===id);if(!m)return;let text=`⚔️ ${m.p1} VS ${m.p2}\n📅 ${fmtDate(m.date)}\n📚 ${m.topic}\n${m.place?"📍 "+m.place+"\n":""}${m.description||""}`;navigator.clipboard?.writeText(text).then(()=>toast("تم نسخ تفاصيل المواجهة."),()=>prompt("انسخ التفاصيل:",text))}
+function shareMatch(id){let m=state.matches.find(x=>x.id===id);if(!m)return;let text=`⚔️ المواجهة القادمة: ${m.p1} VS ${m.p2}\n📅 ${fmtDate(m.date)}\n📚 ${m.topic}`;if(navigator.share)navigator.share({title:"EL Prof Championship",text}).catch(()=>{});else copyMatch(id)}
+window.copyMatch=copyMatch;window.shareMatch=shareMatch;
+window.deletePlayer=i=>{if(confirmAction("حذف هذا المشترك؟")){let name=state.players[i];state.players.splice(i,1);state.matches=state.matches.filter(m=>m.p1!==name&&m.p2!==name);save();renderAll();toast("تم الحذف.")}};
+window.renamePlayer=i=>{let old=state.players[i],n=prompt("الاسم الجديد:",old);if(n===null)return;n=n.trim();if(!n){toast("الاسم فارغ.");return}if(state.players.some((p,j)=>j!==i&&p.toLowerCase()===n.toLowerCase())){toast("الاسم مكرر.");return}state.players[i]=n;state.matches.forEach(m=>{if(m.p1===old)m.p1=n;if(m.p2===old)m.p2=n;if(m.winner===old)m.winner=n});save();renderAll()}
+window.setWinner=(id,enc)=>{let m=state.matches.find(x=>x.id===id),winner=decodeURIComponent(enc);if(!m)return;if(confirmAction(`تأكيد أن الفائز هو ${winner}؟`)){m.winner=winner;m.status="finished";save();renderAll();confetti();tone(740,.3,"triangle");toast("تم حفظ النتيجة وتحديث الترتيب.")}}
+window.cancelMatch=id=>{if(confirmAction("إلغاء هذه المواجهة؟")){state.matches=state.matches.filter(m=>m.id!==id);save();renderAll();toast("تم إلغاء المواجهة.")}}
+window.editMatch=id=>{let m=state.matches.find(x=>x.id===id);if(!m)return;let d=prompt("الموعد (صيغة YYYY-MM-DDTHH:MM):",m.date||"");if(d===null)return;let t=prompt("موضوع المنافسة:",m.topic||"");if(t===null)return;m.date=d;m.topic=t||m.topic;save();renderAll();toast("تم تعديل المواجهة.")}
+
+$("adminBtn").onclick=()=>{$("loginModal").classList.add("show");$("adminCode").focus()}
+$("showCode").onchange=e=>$("adminCode").type=e.target.checked?"text":"password";
+$("loginSubmit").onclick=()=>{if($("adminCode").value===ADMIN_CODE){$("loginModal").classList.remove("show");$("adminModal").classList.add("show");$("adminCode").value="";toast("تم فتح لوحة التحكم.");populateAdmin()}else{$("adminCode").value="";toast("كود الدخول غير صحيح.")}};
+document.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>$(b.dataset.close).classList.remove("show"));
+$("addName").onclick=()=>{if(addName($("newName").value)){$("newName").value="";toast("تمت إضافة المشترك.")}};
+$("bulkAdd").onclick=()=>{let names=$("bulkNames").value.split(/\n|,/).map(x=>x.trim()).filter(Boolean),added=0;names.forEach(n=>added+=addName(n)?1:0);$("bulkNames").value="";toast(`تمت إضافة ${added} اسم.`)}
+$("sortNames").onclick=()=>{state.players.sort((a,b)=>a.localeCompare(b,"ar"));save();renderAll();toast("تم ترتيب الأسماء أبجديًا.")}
+$("clearNames").onclick=()=>{if(confirmAction("سيتم حذف جميع الأسماء والمواجهات المرتبطة بها. هل أنت متأكد؟")){state.players=[];state.matches=[];save();renderAll();toast("تم حذف جميع الأسماء.")}}
+$("saveSettings").onclick=()=>{state.settings={title:$("setTitle").value.trim(),topic:$("setTopic").value.trim(),date:$("setDate").value,place:$("setPlace").value.trim(),description:$("setDescription").value.trim()};save();renderAll();toast("تم حفظ إعدادات المنافسة.")}
+$("createManualMatch").onclick=()=>{let p1=$("manualP1").value,p2=$("manualP2").value;if(!p1||!p2){toast("اختر لاعبين.");return}if(p1===p2){toast("لا يمكن للاعب منافسة نفسه.");return}let m={id:Date.now(),p1,p2,date:$("manualDate").value||state.settings.date||"",topic:$("manualTopic").value.trim()||state.settings.topic||"المنافسة",title:state.settings.title||"",place:state.settings.place||"",description:state.settings.description||"",winner:null,status:"upcoming",createdAt:new Date().toISOString()};state.matches.push(m);save();renderAll();showVS(p1,p2);toast("تم إنشاء المواجهة.")}
+$("exportData").onclick=()=>{let blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="EL-Prof-Championship.json";a.click();URL.revokeObjectURL(a.href)}
+$("importData").onchange=e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let x=JSON.parse(r.result);if(!x.players||!x.matches||!x.settings)throw 0;state=x;save();renderAll();toast("تم استيراد بيانات البطولة.")}catch{toast("ملف JSON غير صالح.")}};r.readAsText(f)}
+$("resetTournament").onclick=()=>{if(confirmAction("سيتم حذف كل بيانات البطولة وإعادتها فارغة. هل أنت متأكد؟")){state=structuredClone(defaults);save();currentSelection=[];renderAll();toast("تمت إعادة ضبط البطولة.")}}
+$("chooseBtn").onclick=spinPick;$("opponentBtn").onclick=spinPick;$("undoBtn").onclick=undoSelection;$("resetSpinBtn").onclick=()=>{currentSelection=[];$("selectedName").textContent="—";$("opponentBtn").classList.add("hidden");toast("تمت إعادة العجلة لوضع الاختيار الأول.")}
+$("searchPlayers").oninput=renderPlayers;
+document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));document.querySelectorAll(".admin-page").forEach(x=>x.classList.remove("active"));t.classList.add("active");$("tab-"+t.dataset.tab).classList.add("active");populateAdmin()})
+$("soundBtn").onclick=()=>{state.sound=!state.sound;save();$("soundBtn").textContent=state.sound?"🔊 الصوت":"🔇 صامت";toast(state.sound?"تم تشغيل الصوت.":"تم كتم الصوت.")}
+$("fullBtn").onclick=()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.()}
+setInterval(()=>{let m=state.matches.filter(x=>x.status==="upcoming").sort((a,b)=>(a.date||"9999").localeCompare(b.date||"9999"))[0];if(m)updateCountdown(m)},1000);
+window.addEventListener("resize",drawWheel);
+$("soundBtn").textContent=state.sound?"🔊 الصوت":"🔇 صامت";
+renderAll();setTimeout(()=>$("loading").classList.add("hidden"),900);
+</script>
+</body></html>
